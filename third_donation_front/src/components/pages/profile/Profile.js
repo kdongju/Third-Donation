@@ -1,11 +1,11 @@
 import React, { memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ColumnNewRedux from '../components/ColumnNewRedux';
-import Footer from '../components/footer';
+import ColumnNewRedux from '../../components/ColumnNewRedux';
+import Footer from '../../components/footer';
 import { createGlobalStyle } from 'styled-components';
-import * as selectors from '../../store/selectors';
-import { fetchAuthorList } from '../../store/actions/thunks';
-import api from '../../core/api';
+import * as selectors from '../../../store/selectors';
+import { fetchAuthorList } from '../../../store/actions/thunks';
+import api from '../../../core/api';
 
 const GlobalStyles = createGlobalStyle`
   header#myHeader.navbar.white {
@@ -37,6 +37,7 @@ const Colection = ({ authorId }) => {
   const [openMenu, setOpenMenu] = React.useState(true);
   const [openMenu1, setOpenMenu1] = React.useState(false);
   const [openMenu2, setOpenMenu2] = React.useState(false);
+
   const handleBtnClick = () => {
     setOpenMenu(!openMenu);
     setOpenMenu1(false);
@@ -64,7 +65,7 @@ const Colection = ({ authorId }) => {
 
   const dispatch = useDispatch();
   const authorsState = useSelector(selectors.authorsState);
-  const author = authorsState.data ? authorsState.data[0] : {};
+  const author = authorsState.data ? authorsState.data[authorId - 1] : {};
 
   useEffect(() => {
     dispatch(fetchAuthorList(authorId));

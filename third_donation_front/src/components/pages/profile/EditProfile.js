@@ -1,15 +1,15 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Footer from '../components/footer';
+import Footer from '../../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import auth, { authorUrl } from '../../core/auth';
-import request from '../../core/auth/request';
+import auth, { authorUrl } from '../../../core/auth';
+import request from '../../../core/auth/request';
 import { navigate } from '@reach/router';
-import api from '../../core/api';
-import { fetchAuthorList } from '../../store/actions/thunks';
-import * as selectors from '../../store/selectors';
+import api from '../../../core/api';
+import { fetchAuthorList } from '../../../store/actions/thunks';
+import * as selectors from '../../../store/selectors';
 import axios from 'axios';
 
 const GlobalStyles = createGlobalStyle`
@@ -146,9 +146,7 @@ const Profile = ({ authorId }) => {
         style={{
           backgroundImage: `url(${
             api.baseUrl +
-            (author && author.banner && author.banner.url
-              ? author.banner.url
-              : '/uploads/4_1ec08f99e2.jpg')
+            (author && author.banner && author.banner.url ? author.banner.url : '/uploads/배너.jpg')
           })`,
         }}>
         <div className="mainbreadcumb"></div>
@@ -282,7 +280,7 @@ const Profile = ({ authorId }) => {
                               ? profileImageTemp
                                 ? profileImageTemp
                                 : api.baseUrl + author.avatar.url
-                              : '../../img/author_single/author_thumbnail.jpg'
+                              : api.baseUrl + '/mock_data/uploads/예술가1.jpg'
                           }
                           id="click_profile_img"
                           className="d-profile-img-edit img-fluid"
