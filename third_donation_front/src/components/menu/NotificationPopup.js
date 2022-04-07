@@ -13,18 +13,20 @@ const NotificationPopup = () => {
   const { data: account } = useSelector(selectors.accountState);
 
   const fetchNotifications = async () => {
+    console.log('실행1');
     await Axios.get(`/notifications/${account.id}`)
       .then(({ data }) => data)
       .then(({ data }) => setData(data));
   };
 
   const readNotifications = async () => {
+    console.log('실행2');
     await Axios.patch(`/notifications/read/${account.id}`).then(() => setData([]));
   };
 
   const onIconClick = () => {
-    !notification && readNotifications();
-    notification && fetchNotifications();
+    notification && readNotifications();
+    !notification && fetchNotifications();
     setNotification(!notification);
   };
 
