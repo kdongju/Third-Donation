@@ -11,7 +11,7 @@ const MsgRecordListRow = ({ messages }) => {
       {messages.map((msg) => (
         <tr key={msg.message} className="msgRow">
           {/* <td className="rowId">{msg.buyer.id}</td> */}
-          <td className="rowId author_list_pp">
+          <td className="rowId">
             <span onClick={() => navigateTo(`/profile/${msg.buyer.id}`)}>
               <img
                 className="lazy"
