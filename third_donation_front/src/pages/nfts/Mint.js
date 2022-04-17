@@ -120,7 +120,7 @@ const Mint = () => {
           const fileHash = uploadResult.path;
 
           if (fileHash) {
-            console.log(`hash: ${fileHash}`);
+            // console.log(`hash: ${fileHash}`);
             // metadata생성하기
             let time = new Date();
 

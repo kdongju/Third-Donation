@@ -52,10 +52,9 @@ const Sell = () => {
   // 판매 등록을 승인하는 함수
   const approveToggle = async (artNftContract, currentWallet) => {
     try {
-      const response = await artNftContract.methods
+      await artNftContract.methods
         .setApprovalForAll(SALE_NFT_CONTRACT_ADDRESS, true)
         .send({ from: currentWallet });
-      console.log(response);
     } catch (error) {
       console.log(error);
       setLoading(false);

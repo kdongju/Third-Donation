@@ -53,8 +53,8 @@ const ItemDetail = function () {
   const msgInfo = useRef();
 
   const heartClickHandle = () => {
-    console.log(account);
-    console.log(account.id != nft.artist.id);
+    // console.log(account);
+    // console.log(account.id != nft.artist.id);
     if (account && account.id != nft.artist.id) {
       Axios.post('/nfts/wish', {
         tokenId: nft.id,
@@ -249,20 +249,20 @@ const ItemDetail = function () {
       const currentWallet = accounts[0];
 
       // 구매 승인 (스마트 컨트랙트)
-      const response = await ssafyTokenContract.methods
+      await ssafyTokenContract.methods
         .approve(SALE_NFT_CONTRACT_ADDRESS, tokenPrice)
         .send({ from: currentWallet });
-      console.log(response);
+      // console.log(response);
 
       // NFT 구매 (스마트 컨트랙트)
-      const response2 = await saleArtContract.methods
+      await saleArtContract.methods
         .purchaseArtToken(nftId, currentWallet, charityWalletAddress)
         .send({ from: currentWallet })
         .then(() => {
           // NFT 구매 (백엔드)
           savePurchase(charityWalletAddress, msgToArtist);
         });
-      console.log(response2);
+      // console.log(response2);
 
       setLoading(false);
       alert('NFT 구매가 완료되었습니다.');
@@ -309,8 +309,8 @@ const ItemDetail = function () {
 
   return (
     <BasicLayout>
-      {console.log(nft)}
-      {console.log(tokenUri)}
+      {/* {console.log(nft)}
+      {console.log(tokenUri)} */}
       <section className="container mt-4">
         <div className="row mt-md-5 pt-md-4">
           <div className="col-md-6 text-center">
