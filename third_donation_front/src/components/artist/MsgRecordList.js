@@ -19,8 +19,7 @@ const MsgRecord = () => {
   const getList = (pageNumber) => {
     Axios.get(`/nfts/exchange/sales/messages/${account.id}`, {
       params: {
-        // artistId: account.id,
-        pageNumber: pageNumber,
+        page: pageNumber,
       },
     })
       .then(({ data }) => data)
@@ -46,7 +45,7 @@ const MsgRecord = () => {
             <table className="msgBody">
               <thead>
                 <tr>
-                  <th className="name">ID</th>
+                  <th className="name">유저</th>
                   <th className="price">후원자 이름</th>
                   <th className="content">메세지</th>
                   <th className="nftName">NFT명</th>
